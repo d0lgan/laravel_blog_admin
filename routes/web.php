@@ -16,5 +16,27 @@ Route::get('/', function () {
 });
 
 Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['namespace' => 'Blog', 'prefix' => 'blog'], function () {
+	Route::resource('posts', 'PostController')->names('blog.posts');
+});
+
+//Route::resource('rest', 'RestTestController')->names('restTest');
+
+// Админка Блога
+$groupData = [
+	'namespace' => 'Blog\Admin',
+	'prefix' => 'admin/blog',
+];
+Route::group($groupData, function() {
+	//BlogPosts
+	Route::resource('posts', 'PostController')
+		->except(['show'])
+		->names('blog.admin.posts');
+	//BlogCategory
+	$methods = ['index', 'edit', 'update', 'create', 'store'];
+	Route::resource('categories', 'CategoryController')
+		->only($methods)
+		->names('blog.admin.categories');
+});
