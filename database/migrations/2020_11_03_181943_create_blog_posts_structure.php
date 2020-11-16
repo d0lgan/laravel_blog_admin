@@ -14,10 +14,10 @@ class CreateBlogPostsStructure extends Migration
     public function up()
     {
         Schema::create('blog_posts', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
 
-            $table->integer('category_id')->unsigned();
-            $table->integer('user_id')->unsigned();
+            $table->bigInteger('category_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
 
             $table->string('slug')->unique();
             $table->string('title');
@@ -47,6 +47,6 @@ class CreateBlogPostsStructure extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blog_posts'); 
+        Schema::dropIfExists('blog_posts');
     }
 }
