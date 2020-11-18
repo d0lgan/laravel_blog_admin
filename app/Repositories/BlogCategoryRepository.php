@@ -22,7 +22,7 @@ class BlogCategoryRepository extends CoreRepository
 	}
 
 	// Получить список категорий для вывода в выпадющем спске
-	public function getForComboBox() {
+	public function getFromComboBox() {
 		$columns = implode(', ', [
 			'id',
 			'CONCAT (id, ". ", title) AS id_title'
