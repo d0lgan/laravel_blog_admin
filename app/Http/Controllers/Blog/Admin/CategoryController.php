@@ -9,6 +9,7 @@ use App\Http\Requests\BlogCategoryCreateRequest;
 use App\Http\Controllers\Controller;
 use App\Repositories\BlogCategoryRepository;
 use App\Http\Controllers\Blog\BaseController;
+use Illuminate\Support\Str;
 
 // Управление категориями блога
 class CategoryController extends BaseController
@@ -59,7 +60,7 @@ class CategoryController extends BaseController
     {
          $data = $request->input();
          if (empty($data['slug'])) {
-            $data['slug'] = str_slug($data['title']);
+            $data['slug'] = Str::slug($data['title']);
          }
 
          // 2 способа сохранения категории
@@ -84,7 +85,7 @@ class CategoryController extends BaseController
      */
     public function show($id)
     {
-        dd(__METHOD__); 
+        dd(__METHOD__);
     }
 
     /**
@@ -105,7 +106,7 @@ class CategoryController extends BaseController
 
         $categoryList = $this->blogCategoryRepository->getForComboBox();
 
-        return view('blog.admin.categories.edit', 
+        return view('blog.admin.categories.edit',
             compact('item', 'categoryList'));
     }
 
@@ -152,9 +153,9 @@ class CategoryController extends BaseController
 
         $data = $request->all();
         if (empty($data['slug'])) {
-            $data['slug'] = str_slug($data['title']);
+            $data['slug'] = Str::slug($data['title']);
          }
-        
+
         $result = $item->fill($data)->save();
         if ($result) {
             return redirect()
