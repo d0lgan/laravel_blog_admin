@@ -19,8 +19,9 @@ class BlogPost extends Model
         'published_at',
         'user_id',
     ];
+    public $is_published;
 
-	/** Категория статьи
+    /** Категория статьи
 	  * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	  */
     public function category() {
