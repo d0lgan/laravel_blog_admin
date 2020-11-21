@@ -22,4 +22,4 @@ abstract class CoreRepository
 	{
 		return clone $this->model;
 	}
-}	
+}

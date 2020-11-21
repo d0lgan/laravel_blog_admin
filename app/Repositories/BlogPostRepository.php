@@ -38,10 +38,9 @@ class BlogPostRepository extends CoreRepository
 				}
 				/*	Второй вариант
 				'category:id,title',
-				'user:id,name' */
+				'user:id,name'*/
 			])
 			->paginate($perPage);
-
 		return $result;
 	}
 

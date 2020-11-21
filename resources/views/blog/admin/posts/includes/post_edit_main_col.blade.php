@@ -22,7 +22,7 @@
                     <div class="tab-pane active" id="maindata" role="tabpanel">
                         <div class="form-group">
                             <label for="title">Заголовок</label>
-                            <input type="title" name="title" value="{{ $item->title }}" class="form-control" minlength="3" required="">
+                            <input type="title" name="title" value="{{ $item->title }}" class="form-control" required="">
                         </div>
                         <div class="form-group">
                             <label for="content_raw">Статья</label>

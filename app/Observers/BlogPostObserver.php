@@ -8,6 +8,13 @@ use Illuminate\Support\Str;
 
 class BlogPostObserver
 {
+    public function creating(BlogPost $blogPost) {
+        $this->setPublishedAt($blogPost);
+        $this->setSlug($blogPost);
+        $this->setHtml($blogPost);
+        $this->setUser($blogPost);
+    }
+
     /**
      * Handle the models blog post "created" event.
      *
@@ -30,6 +37,17 @@ class BlogPostObserver
 
         $this->setPublishedAt($blogPost);
         $this->setSlug($blogPost);
+    }
+
+    protected function setHtml(BlogPost $blogPost) {
+        if ($blogPost->isDirty('content_raw')) {
+            // TODO: тут должна быть генерация markdown -> html
+            $blogPost->content_html = $blogPost->content_raw;
+        }
+    }
+
+    protected function setUser(BlogPost $blogPost) {
+        $blogPost->user_id = auth()->id() ?? BlogPost::UNKNOWN_USER;
     }
 
     protected function setPublishedAt(BlogPost $blogPost) {

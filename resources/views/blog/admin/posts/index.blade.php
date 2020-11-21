@@ -28,7 +28,7 @@
 									<td>
 										<a href="{{ route('blog.admin.posts.edit', $post->id) }}">{{ $post->title }}</a>
 									</td>
-									<td>{{ $post->published_at ? \Carbon\Carbon::parse($post->publsihed_at)->format('d.M H.i') : "" }}</td>
+									<td>{{ $post->published_at ? /*\Carbon\Carbon::parse($post->publsihed_at)->format('d.M H:i')*/$post->published_at : "" }}</td>
 								</tr>
 							@endforeach
 						</tbody>
