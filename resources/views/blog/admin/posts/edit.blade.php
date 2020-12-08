@@ -2,7 +2,7 @@
 
 @section('content')
     @if($item->exists)
-        <form action="{{ route('blog.admin.posts.update', $item->id) }}" method="POST">
+        <form action="{{ route('blog.admin.posts.update', $item->id) }}" method="POST" style="width: 95%;">
         {{--Здесь мы говорим методу контроллера, который принимает данные только с методов PUT и PATCH,
         что на самом деле метод передачи не POST, а PATCH (корректировка данных)--}}
         @method('PATCH')
